@@ -1,0 +1,13 @@
+package ptm.team.service;
+
+import ptm.team.vo.ExerciseVO;
+import ptm.team.vo.PtVO;
+import ptm.team.vo.RoundVO;
+import ptm.team.vo.TrainerVO;
+import ptm.team.vo.UserVO;
+
+//예시입니다 
+public interface T_MemberSearchService 
+{
+	public int Select(UserVO vo) throws Exception;
+}

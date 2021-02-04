@@ -1,0 +1,154 @@
+$(document).ready(function()
+	{
+		$(".topgrid").click(function()
+		{
+			$(".navicontents").slideToggle(1000);
+		});
+		
+		$(".topback").click(function()
+		{
+			window.history.back();
+		});
+	});
+	
+	function juso(){
+		new daum.Postcode({
+		oncomplete: function(data) {
+		$("#t_addr1").val(data.address);
+		}
+	}).open();
+	}
+ 
+ //=======================================================
+ 
+ 	var fa = true; 
+	var fb = true;
+	var fc = true;
+	var fd = true;
+	var fe = true;
+	
+	function t_pwCheck()
+	{
+		var pw = $("#t_pw").val();     
+		var sc = ["!","@","#","$","%","^","&","+","="];
+		var check_sc= 0;
+        for(var i=0;i<sc.length;i++)
+        {
+	         if(pw.indexOf(sc[i]) != -1)
+	         {
+	          check_sc = 1;
+	         }
+        }
+        
+	     if(check_sc == 0 )
+	     {
+	     	$(".pw_message").html("!,@,#,$,%,^,&,+,= 등의 특수문자가 들어가 있지 않습니다.").css("color","red");css("display","inline");
+	     	fa = false;	
+	     }else
+	     {
+	    	 $(".pw_message").html("").css("display","none");
+	     	fa= true;
+	     }
+	 }
+	
+	function t_pwcCheck()
+	{ 	
+		if( $("#t_pw").val() != $("#t_pwc").val())
+        {
+             $(".pwc_message").html("비밀번호가 일치하지않습니다.").css("color","red").css("display","inline");
+             fb= false;
+        }else
+     	{
+        	 $(".pwc_message").html("").css("display","none");
+             fb= true;
+     	}
+	}
+	
+	function t_idCheck() // 아이디 닉네임 사용 
+	{
+
+		var t_id = $("#t_id").val();
+		$.ajax({
+			type:'post',
+			url:'/T-JoinIdCheck',
+			data:{"t_id":t_id}, // id란 변수에 id 데이터값을 넣어서 보냄 
+			success:function(result) // 성공적으로 수행되었으면 result로 값변환 result 정의
+			{
+				
+				if(result.trim()=="1") // 성공하면 1 실패하면 0을 받아서 실행
+				{						
+					fc= true;
+				}else
+				{
+					$(".id_message").text("이미 사용중인 아이디입니다");
+					$(".id_message").css("color","red");
+					 fc= false;
+				}
+			}
+		});
+	}
+	
+	function t_emailCheck() // 아이디 닉네임 사용 
+	{
+	
+		var t_email = $("#t_email").val();
+		$.ajax({
+			type:'post',
+			url:'/T-JoinEmailCheck',
+			data:{"t_email":t_email}, // id란 변수에 id 데이터값을 넣어서 보냄 
+			success:function(result) // 성공적으로 수행되었으면 result로 값변환 result 정의
+			{
+				
+				if(result.trim()=="1") // 성공하면 1 실패하면 0을 받아서 실행
+				{						
+					fd= true;
+				}else
+				{
+					$(".email_message").text("이미 사용중인 이메일입니다");
+					$(".email_message").css("color","red");
+					 fd= false;
+				}
+			}
+		});
+	}
+	
+	function t_phoneCheck()
+	{
+		
+		var t_phone = $("#t_phone").val();
+		$.ajax({
+			type:'post',
+			url:'Joinnickcheck.jsp',
+			data:{"nick":nick}, 
+			success:function(result) // 성공적으로 수행되었으면 result로 값변환 result 정의
+			{
+				
+				if(result.trim()=="1") // 성공하면 1 실패하면 0을 받아서 실행
+				{						
+					fe= true;
+				}else
+				{
+					$(".phone_message").text("이미 사용중인 번호입니다.");
+					$(".phone_message").css("color","red");
+					 fe= false;
+				}
+			}
+		});
+
+	}
+	
+	function Dosubmit()
+	{
+		if(fa==true&&fb==true&&fc==true&&fd==true&&fe==true)
+		{
+			document.join.submit();
+		}							
+		else
+		{				
+			alert('입력이 올바르지 않습니다.'); 		
+		}
+	}
+	
+
+	
+	

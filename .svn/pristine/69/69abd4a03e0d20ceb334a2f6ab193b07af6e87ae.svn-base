@@ -1,0 +1,39 @@
+
+-- Ʈ���̳�ȸ��
+CREATE TABLE `trainer` (
+	`t_no`           INT          NOT NULL auto_increment, -- Ʈ���̳ʹ�ȣ
+	`t_name`         VARCHAR(20)  NOT NULL, -- Ʈ���̳��̸�
+	`t_id`           VARCHAR(20)  NOT NULL unique, -- ���̵�
+	`t_pw`           VARCHAR(200) NOT NULL, -- ��й�ȣ
+	`t_email`        VARCHAR(100) NOT NULL unique, -- �̸���
+	`t_emailhash`    VARCHAR(64)  NULL,     -- �̸����ؽ�
+	`t_emailchecked` BOOLEAN      NULL,     -- �̸���Ȯ��
+	`t_phone`        VARCHAR(20)  NOT NULL unique, -- �޴�����ȣ
+	`t_joindate`     DATETIME     NOT NULL default CURRENT_TIMESTAMP, -- ������
+	`t_addr1`        VARCHAR(255) NOT NULL, -- �ּ�
+	`t_addr2`        VARCHAR(255) NOT NULL, -- ���ּ�
+	`t_originP`      VARCHAR(200) NULL,     -- ��������
+	`t_realP`        VARCHAR(200) NULL,     -- ��������
+	`t_etc`          TEXT         NULL,     -- �ڱ�Ұ�
+	`t_state`        VARCHAR(2)   NOT NULL default 'Y', -- ���Ի��¿���
+	`t_admin`        VARCHAR(2)   NOT NULL default 'N',  -- �����ڿ���
+	primary key (t_no)
+);
+
+-- �Ϲ�ȸ��
+CREATE TABLE `members` (
+	`m_qr`           VARCHAR(50)  NOT NULL unique, -- QR�ڵ��ȣ
+	`m_name`         VARCHAR(50)  NOT NULL, -- �̸�
+	`m_email`        VARCHAR(100) NOT NULL unique, -- �̸���
+	`m_emailhash`    VARCHAR(64)  NULL,     -- �̸����ؽ�
+	`m_emailchecked` BOOLEAN      NULL,     -- �̸���Ȯ��
+	`m_phone`        VARCHAR(20)  NOT NULL unique, -- �޴�����ȣ
+	`m_originP`      VARCHAR(200) NULL,     -- ��������
+	`m_realP`        VARCHAR(200) NULL,     -- ��������
+	`m_kg`           DOUBLE       NULL,     -- ü��
+	`m_bone`         DOUBLE       NULL,     -- �ٰ�ݷ�
+	`m_fat`          DOUBLE       NULL,     -- ü����
+	`m_joindate`     DATE         NOT NULL, -- ������
+	`m_state`        VARCHAR(2)   NULL,     -- ���񽺻�뿩��
+	primary key (m_qr)
+);

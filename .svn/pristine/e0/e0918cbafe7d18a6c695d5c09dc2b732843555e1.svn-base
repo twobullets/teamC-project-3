@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:sec="http://www.springframework.org/schema/security"
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+<sec:global-method-security secured-annotations="enabled" pre-post-annotations="enabled" />
+<sec:http use-expressions="true">
+
+<!-- 로그인 주소, 로그인 성공했을 때 이동한 주소, 실패했을때 이동할 주소에 대한 설정 -->
+<sec:form-login login-page="/user/signin" default-target-url="/user/signinSuccess" authentication-failure-url="/user/signinFailed"/>
+
+<!-- 로그아웃 주소, 로그아웃 성공했을때 이동할 주소에 대한 설정 -->
+<sec:logout logout-url="/user/signout" logout-success-url="/user/signin" />
+
+<sec:intercept-url pattern="/user/onlyUserByXml"
+access="hasRole('ROLE_USER')" />
+<sec:intercept-url pattern="/user/onlyAdminByXml"
+access="hasRole('ROLE_ADMIN')" />
+<sec:intercept-url pattern="/**" access="permitAll" />
+</sec:http>
+
+<!-- 암호화된 패스워드를 읽을 수 있는 인코더(MD5 or SHA-256 or BCrypt 등) 설정 -->
+<bean id="passwordEncoder"
+class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"
+/>
+
+<sec:authentication-manager>
+<sec:authentication-provider user-service-ref="userService">
+<sec:password-encoder ref="passwordEncoder" />
+</sec:authentication-provider>
+</sec:authentication-manager>
+</beans>

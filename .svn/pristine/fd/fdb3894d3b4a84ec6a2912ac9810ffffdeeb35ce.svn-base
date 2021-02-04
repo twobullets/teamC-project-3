@@ -1,0 +1,21 @@
+package ptm.team.service;
+
+import javax.inject.Inject;
+import org.springframework.stereotype.Service;
+import ptm.team.vo.TrainerVO;
+import ptm.team.dao.TrainerDAO;
+
+
+@Service
+public class TrainerServiceImpl implements TrainerService{
+	
+	@Inject
+	TrainerDAO trainerDAO;
+	
+	@Override
+	public int insertTrainer(TrainerVO vo)throws Exception
+	{	
+		return trainerDAO.insertTrainer(vo);
+	}
+
+}

@@ -1,0 +1,25 @@
+package ptm.trainer.controller;
+
+
+import java.util.Locale;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import ptm.team.service.TrainerService;
+
+@Controller
+public class T_LoginController
+{	
+	@Inject
+	private TrainerService trainerService;
+	
+	@RequestMapping(value = "/")//uri
+	public String login(){	
+	
+		return "Trainer/T-Login";//회원가입 화면으로 이동
+	}
+}

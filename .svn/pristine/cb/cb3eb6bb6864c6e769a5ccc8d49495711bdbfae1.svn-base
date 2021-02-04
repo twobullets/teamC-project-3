@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ptm.team.mapper.T_ManagementMapper">
+
+	<select id="selectList" resultType="ptm.team.vo.PtVO" parameterType="ptm.team.vo.ListVO">
+		SELECT p_no
+			 , t_no
+			 , m_qr
+			 , p_state
+			 , p_ok
+			 , p_comment
+			 , (select m_name from members where m_qr = pt.m_qr) as m_name
+			 , (select m_realP from members where m_qr = pt.m_qr) as m_realP
+		  FROM pt
+		 WHERE 1=1
+		<!--  WHERE t_no = #{t_no} -->
+		 <if test = "searchMember != null">
+		   AND m_name like CONCAT ('%', #{searchMember},'%')
+		 </if>
+	</select>
+	
+	<select id="selectExercise" resultType="ptm.team.vo.PtVO">
+		SELECT r_no
+			 , t_no
+			 , m_qr
+			 , p_no
+			 , r_ct
+			 , r_date
+			 , (select m_name from members where m_qr = round.m_qr) as m_name
+			 , (select m_realP from members where m_qr = round.m_qr) as m_realP
+		  FROM round
+		 WHERE 1=1
+	</select>
+	
+</mapper>

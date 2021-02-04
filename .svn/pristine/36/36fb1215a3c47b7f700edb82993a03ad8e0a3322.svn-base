@@ -1,0 +1,8 @@
+package ptm.team.service;
+
+import ptm.team.vo.TrainerVO;
+
+public interface TrainerService 
+{
+	public int insertTrainer(TrainerVO vo) throws Exception;
+}

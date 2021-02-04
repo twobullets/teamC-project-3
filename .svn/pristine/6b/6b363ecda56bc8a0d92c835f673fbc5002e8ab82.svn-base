@@ -1,0 +1,106 @@
+package ptm.team.vo;
+
+public class UserVO {
+	
+	private String	u_qr;
+	private String  u_name;
+	private String  u_email;
+	private String  u_emailhash;
+	private boolean u_emailchecked;
+	private String  u_phone;
+	private String  u_originP;
+	private String  u_realP;
+	private double  u_kg;
+	private double  u_bone;
+	private double  u_fat;
+	private String  u_joindate;
+	private char  	u_state; //Y:°¡ÀÔ, N:Å»Åð
+	
+	
+	
+	public UserVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public String getU_qr() {
+		return u_qr;
+	}
+	public void setU_qr(String u_qr) {
+		this.u_qr = u_qr;
+	}
+	public String getU_name() {
+		return u_name;
+	}
+	public void setU_name(String u_name) {
+		this.u_name = u_name;
+	}
+	public String getU_email() {
+		return u_email;
+	}
+	public void setU_email(String u_email) {
+		this.u_email = u_email;
+	}
+	public String getU_emailhash() {
+		return u_emailhash;
+	}
+	public void setU_emailhash(String u_emailhash) {
+		this.u_emailhash = u_emailhash;
+	}
+	public boolean isU_emailchecked() {
+		return u_emailchecked;
+	}
+	public void setU_emailchecked(boolean u_emailchecked) {
+		this.u_emailchecked = u_emailchecked;
+	}
+	public String getU_phone() {
+		return u_phone;
+	}
+	public void setU_phone(String u_phone) {
+		this.u_phone = u_phone;
+	}
+	public String getU_originP() {
+		return u_originP;
+	}
+	public void setU_originP(String u_originP) {
+		this.u_originP = u_originP;
+	}
+	public String getU_realP() {
+		return u_realP;
+	}
+	public void setU_realP(String u_realP) {
+		this.u_realP = u_realP;
+	}
+	public double getU_kg() {
+		return u_kg;
+	}
+	public void setU_kg(double u_kg) {
+		this.u_kg = u_kg;
+	}
+	public double getU_bone() {
+		return u_bone;
+	}
+	public void setU_bone(double u_bone) {
+		this.u_bone = u_bone;
+	}
+	public double getU_fat() {
+		return u_fat;
+	}
+	public void setU_fat(double u_fat) {
+		this.u_fat = u_fat;
+	}
+	public String getU_joindate() {
+		return u_joindate;
+	}
+	public void setU_joindate(String u_joindate) {
+		this.u_joindate = u_joindate;
+	}
+	public char getU_state() {
+		return u_state;
+	}
+	public void setU_state(char u_state) {
+		this.u_state = u_state;
+	}
+	
+	
+}
